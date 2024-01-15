@@ -1,2 +1,9 @@
 wildfly:
   version: 15.0.0.Final
+  jvm:
+    xms: 1024m
+    xmx: 2048m
+    metaspace:
+      size: 96M
+      max: 512m
+    additional_opts: ''

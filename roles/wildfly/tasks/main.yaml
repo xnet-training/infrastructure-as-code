@@ -19,6 +19,11 @@
     src: /tmp/wildfly.tar.gz
     dest: /opt/shared
 
+- name: Wildfly| Update standalone configuration
+  template:
+    src: standalone.conf.j2
+    dest: /opt/shared/wildfly-{{ wildfly.version }}/bin/standalone.conf
+
 - name: Wildfly| Retirar instalador
   file:
      path: /tmp/wildfly.tar.gz
@@ -36,3 +41,4 @@
     name: wildfly
     enabled: yes
     state: restarted
+
