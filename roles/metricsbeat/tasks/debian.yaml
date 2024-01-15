@@ -1,0 +1,21 @@
+---
+- name: Elastic| add elastic gpg key
+  apt_key:
+    url: "{{ metricbeat_gpg_url }}"
+
+- name: Beats| add beats repository
+  apt_repository:
+    repo: "{{ metricbeat_apt_repo }}"
+    state: present
+    update_cache: yes
+
+- name: Beats| install metricbeat
+  apt:
+    name: "metricbeat={{ metricbeat_version }}"
+    state: present
+    notify:
+    - restart metricbeat
+
+- name: Beats| Configure file beat to run automatically during startup
+  shell: update-rc.d metricbeat defaults 95 10
+  become: true

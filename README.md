@@ -1,2 +1,9 @@
 # infrastructure-as-code
-aplicación de código de infraestructura
+Aplicación de Código de Infraestructura
+
+## Preparacion de Entorno
+
+```sh
+python3 -m venv /opt/ansible
+```
+

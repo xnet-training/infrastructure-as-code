@@ -1,0 +1,6 @@
+---
+- name: restart metricbeat
+  service: #systemd:
+    name: metricbeat
+    state: restarted
+  become: true

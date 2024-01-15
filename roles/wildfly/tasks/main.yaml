@@ -1,0 +1,38 @@
+################################################################
+## Role: Instalacion de Wildfly
+## Company: CROSSNET SAC
+## 
+################################################################
+
+- name: Instalacion| Ruta de despliegue
+  file:
+    path: /opt/shared
+    state: directory
+
+- name: Wildfly| Descargar aplicacion
+  get_url:
+    url: https://download.jboss.org/wildfly/{{ wildfly.version }}/wildfly-{{ wildfly.version }}.tar.gz
+    dest: /tmp/wildfly.tar.gz
+
+- name: Wildfly| Instalar aplicacion
+  ansible.builtin.unarchive:
+    src: /tmp/wildfly.tar.gz
+    dest: /opt/shared
+
+- name: Wildfly| Retirar instalador
+  file:
+     path: /tmp/wildfly.tar.gz
+     state: absent
+
+- name: Wildfly| Habilitar servicio
+  become: yes
+  template:
+    src: wildfly.service.j2
+    dest: /etc/systemd/system/wildfly.service
+  tags: [ servicio ]
+
+- name: Wildfly| Habilitar servicio
+  service:
+    name: wildfly
+    enabled: yes
+    state: restarted

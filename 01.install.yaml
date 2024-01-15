@@ -1,0 +1,5 @@
+- name: Install Wildfly Node
+  hosts: localhost
+  connection: local
+  roles:
+  - wildfly
