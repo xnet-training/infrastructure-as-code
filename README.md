@@ -7,3 +7,6 @@ Aplicación de Código de Infraestructura
 python3 -m venv /opt/ansible
 ```
 
+```sh
+ansible-playbook 01.install.yaml
+```

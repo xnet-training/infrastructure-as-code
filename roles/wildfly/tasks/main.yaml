@@ -37,6 +37,7 @@
   tags: [ servicio ]
 
 - name: Wildfly| Habilitar servicio
+  become: yes
   service:
     name: wildfly
     enabled: yes
