@@ -1,0 +1,10 @@
+- include: debian.yaml
+  when: ansible_os_family == 'Debian'
+
+- include: redhat.yaml
+  when: ansible_os_family == 'RedHat'
+
+- name: SO fammily
+  debug:
+    msg: "OS Family {{ansible_os_family}}"
+

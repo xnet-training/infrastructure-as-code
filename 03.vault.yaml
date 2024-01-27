@@ -1,0 +1,6 @@
+- name: Install Wildfly Node
+  hosts: localhost
+  connection: local
+  become: yes
+  roles:
+  - vault 
