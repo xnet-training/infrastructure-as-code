@@ -8,5 +8,13 @@ python3 -m venv /opt/ansible
 ```
 
 ```sh
-ansible-playbook 01.install.yaml
+ENTORNO=dev ansible-playbook -i $ENTORNO 01.install.yaml
+```
+
+# Provisionamiento de Entorno Parametria
+
+```sh
+ENTORNO=dev
+ansible-playbook -i $ENTORNO 03.consul.yaml
+ansible-playbook -i $ENTORNO 02.vault.yaml
 ```
