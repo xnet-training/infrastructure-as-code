@@ -1,6 +1,6 @@
 - name: Install Wildfly Node
   hosts: configuration
-  connection: remote
+  #connection: remote
   become: yes
   roles:
   - vault 
