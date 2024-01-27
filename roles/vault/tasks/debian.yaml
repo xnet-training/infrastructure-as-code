@@ -1,7 +1,7 @@
 - name: Vault| requires packages
   package: 
     name: "{{ item }}"
-    update_cache: yes
+    #update_cache: yes
   with_items:
   - pgp
   - wget

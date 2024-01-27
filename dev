@@ -1,0 +1,7 @@
+[as]
+172.17.8.220 ansible_password=vagrant
+[monitoring]
+172.17.8.220
+# ansible_connection=ssh ansible_user=vagrant
+[configuration]
+172.17.8.220 ansible_connection=ssh ansible_user=vagrant ansible_ssh_password=vagrant
