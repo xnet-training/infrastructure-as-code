@@ -1,0 +1,6 @@
+- name: Install Consul
+  hosts: configuration
+  #connection: remote
+  become: yes
+  roles:
+  - consul

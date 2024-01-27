@@ -1,0 +1,31 @@
+- name: Consul| requires packages
+  package: 
+    name: "{{ item }}"
+    #update_cache: yes
+  with_items:
+  - pgp
+  - wget
+  become: yes
+
+- name: Consul| download installer
+  get_url:
+    url: https://releases.hashicorp.com/consul/{{consul.version}}/consul_{{consul.version}}_linux_amd64.zip
+    dest: /tmp/consul.zip
+  register: consul_download
+
+- name: Consul| unpackage
+  unarchive:
+    src: /tmp/consul.zip
+    dest: /usr/local/bin
+    #copy: no
+    mode: 0755
+#- name: Vault|
+#  ansible.builtin.apt_key:
+#    url: ps://apt.releases.hashicorp.com/gpg
+#    keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+#
+#- name: Vault|
+#  ansible.builtin.apt_repository:
+#    repo: https://apt.releases.hashicorp.com $(lsb_release -cs) 
+#    #echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+#    state: present

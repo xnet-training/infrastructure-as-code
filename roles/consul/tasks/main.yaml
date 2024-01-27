@@ -1,0 +1,39 @@
+- include: debian.yaml
+  when: ansible_os_family == 'Debian'
+
+- include: redhat.yaml
+  when: ansible_os_family == 'RedHat'
+
+- name: SO fammily
+  debug:
+    msg: "OS Family {{ansible_os_family}}"
+
+- name: Consul| ensure directory
+  file:
+    path: /etc/consul.d
+    state: directory
+
+- name: Consul| ensure data directory
+  file:
+    path: "{{ consul.data_dir }}"
+    state: directory 
+
+- name: Consul| generar HCL
+  template:
+    src: consul.hcl.j2
+    dest: /etc/consul.d/consul.hcl
+
+- name: Consul| Habilitar servicio
+  become: yes
+  template:
+    src: consul.service.j2
+    dest: /etc/systemd/system/consul.service
+  tags: [ servicio ]
+
+- name: Consul| Habilitar servicio
+  become: yes
+  service:
+    name: consul
+    enabled: yes
+    state: restarted
+

@@ -8,3 +8,27 @@
   debug:
     msg: "OS Family {{ansible_os_family}}"
 
+- name: Vault| ensure directory
+  file:
+    path: /etc/vault.d
+    state: directory
+
+- name: Vault| generar HCL
+  template:
+    src: vault.hcl.j2
+    dest: /etc/vault.d/vault.hcl
+
+- name: Vault| Habilitar servicio
+  become: yes
+  template:
+    src: vault.service.j2
+    dest: /etc/systemd/system/vault.service
+  tags: [ servicio ]
+
+- name: Vault| Habilitar servicio
+  become: yes
+  service:
+    name: vault
+    enabled: yes
+    state: restarted
+

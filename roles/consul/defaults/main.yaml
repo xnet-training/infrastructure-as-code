@@ -1,0 +1,5 @@
+consul:
+  version: 1.17.2
+  replicas: 1
+  dc: "caja-cusco"
+  data_dir: "/opt/shared/consul-server"
