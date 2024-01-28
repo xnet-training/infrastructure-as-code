@@ -15,7 +15,7 @@
 
 - name: Vault| unpackage
   unarchive:
-    src: /tmp/vault.zip
+    remote_src: /tmp/vault.zip
     dest: /usr/local/bin
     #copy: no
     mode: 0755
