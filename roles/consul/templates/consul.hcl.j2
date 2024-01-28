@@ -22,8 +22,8 @@ bootstrap_expect = {{ consul.replicas | default(3) }}
 // Direcciones de bindings
 //
 // Asignacion dinamica de IP
-bind_addr = "{{"{{"}} GetPrivateInterfaces | include \"network\" \"192.168.0.0/16\" | attr \"address\" {{"}}"}}"
-client_addr = "{{"{{"}} GetPrivateInterfaces | include \"network\" \"192.168.0.0/16\" | attr \"address\" {{"}}"}}"
+bind_addr = "{{"{{"}} GetPrivateInterfaces | include \"network\" \"172.17.8.0/24\" | attr \"address\" {{"}}"}}"
+client_addr = "{{"{{"}} GetPrivateInterfaces | include \"network\" \"172.17.8.0/24\" | attr \"address\" {{"}}"}}"
 // Asignacion estatica de IP
 //bind_addr   = "192.168.1.41"
 //client_addr = "192.168.1.41"
