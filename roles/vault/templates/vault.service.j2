@@ -8,8 +8,11 @@ StartLimitIntervalSec=60
 StartLimitBurst=3
 
 [Service]
-User=vault
-Group=vault
+Type=simple
+User=root
+Group=root
+#User=vault
+#Group=vault
 ProtectSystem=full
 ProtectHome=read-only
 PrivateTmp=yes
