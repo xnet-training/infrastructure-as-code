@@ -11,4 +11,4 @@ Las credenciales de acceso son:
 Usuario: admin
 Password: changeme
 
-
+![Login a Ansible Semaphore](semaphore_login.png)
