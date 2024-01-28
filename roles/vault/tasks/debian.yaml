@@ -10,13 +10,13 @@
 - name: Vault| download installer
   get_url:
     url: https://releases.hashicorp.com/vault/{{vault.version}}/vault_{{vault.version}}_linux_amd64.zip
-    remote_dest: /tmp/vault.zip
+    dest: /tmp/vault.zip
   register: vault_download
 
 - name: Vault| unpackage
   unarchive:
-    remote_src: /tmp/vault.zip
-    remote_dest: /usr/local/bin
+    src: /tmp/vault.zip
+    dest: /usr/local/bin
     #copy: no
     mode: 0755
 #- name: Vault|
